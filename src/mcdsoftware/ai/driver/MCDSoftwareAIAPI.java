@@ -8,11 +8,21 @@ import mcdsoftware.ai.configuration.MCDSoftwareConfigManager;
 public class MCDSoftwareAIAPI {
     static MCDSoftwareConfigManager configManager;
 
+    public MCDSoftwareAIAPI(){
+        initConfigManager();
+    }
+
     public static MCDSoftwareAIMain instance;
+
+
     public static MCDSoftwareConfigManager getConfigManager(){
         if(configManager == null){
-            new MCDSoftwareConfigManager("test.conf");
+            new MCDSoftwareConfigManager("MarcusAI.conf");
         }
         return configManager;
+    }
+
+    public void initConfigManager(){
+        configManager = new MCDSoftwareConfigManager("MarcusAI.conf");
     }
 }

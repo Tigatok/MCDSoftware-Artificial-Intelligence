@@ -9,8 +9,6 @@ import mcdsoftware.ai.utils.Util;
 public class MCDSoftwareAIMain {
 
     public static void main(String[] args){
-        Util.logMessage(0, "Starting MCDSoftwareConfigManager...");
-        new MCDSoftwareConfigManager("test.conf");
-        Util.logMessage(0, "Finished MCFSoftwareConfigManager!");
+        new MCDSoftwareAIAPI();
     }
 }

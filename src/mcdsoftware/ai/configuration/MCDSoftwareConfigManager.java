@@ -12,6 +12,11 @@ import java.util.List;
 public class MCDSoftwareConfigManager {
     private List<String> configLines;
     private List<String> temp;
+
+    public String getMarcusVersionNumber() {
+        return marcusVersionNumber;
+    }
+
     public String marcusVersionNumber;
     public boolean debugMode;
 
@@ -23,9 +28,9 @@ public class MCDSoftwareConfigManager {
     public MCDSoftwareConfigManager(String pathToConfigFile){
         configLines = new ArrayList<String>();
         temp = new ArrayList<String>();
-        buildConfigFile(pathToConfigFile);
         marcusVersionNumber =  assignStringConfigurables("marcus-version");
         debugMode = assignBooleanConfigurables("debug-mode");
+        buildConfigFile(pathToConfigFile);
     }
 
     /**
@@ -33,7 +38,6 @@ public class MCDSoftwareConfigManager {
      * If the line starts with a #, ignore that line.
      */
     public List<String> buildConfigFile(String pathToFile){
-        Util.logMessage(0, "Initializing buildConfigFile...");
         try {
             String currentLine;
             FileReader fileReader = new FileReader(pathToFile);
@@ -74,7 +78,6 @@ public class MCDSoftwareConfigManager {
             }
         }
         if(configValue == null){
-            Util.logMessage(1, "ConfigValue for "+ configName + " is null and has not been set.");
             configValue = "Not Set";
         }
         return configValue;
@@ -92,7 +95,6 @@ public class MCDSoftwareConfigManager {
             }
         }
         if(configValue == null){
-            Util.logMessage(1, "ConfigValue for "+ configName + " is null and has not been set.");
             configValue = "Not Set";
         }
         return flag;
