@@ -8,6 +8,7 @@ import mcdsoftware.ai.configuration.MCDSoftwareConfigManager;
 public class MCDSoftwareAIAPI {
     static MCDSoftwareConfigManager configManager;
 
+    public static MCDSoftwareAIMain instance;
     public static MCDSoftwareConfigManager getConfigManager(){
         if(configManager == null){
             new MCDSoftwareConfigManager("test.conf");

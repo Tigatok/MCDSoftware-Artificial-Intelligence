@@ -14,9 +14,22 @@ public class Util {
      * @return
      */
     public static String logMessage(int severeness, String messageToLog){
-        String prefix = "[Marcus V]"+ MCDSoftwareAIAPI.getConfigManager().marcusVersionNumber;
-
-
-        return "";
+        String prefix = "[Marcus-"+ MCDSoftwareAIAPI.getConfigManager().marcusVersionNumber +"";
+        if(severeness == 0){
+            prefix = prefix.concat(", Level: Warning]");
+        }
+        else if(severeness >0){
+            prefix = prefix.concat(", Level: Low]");
+        }
+        else if(severeness >=1){
+            prefix = prefix.concat(", Level: Med]");
+        }
+        else if(severeness >=2){
+            prefix = prefix.concat(", Level: High]");
+        }
+        else if(severeness >=3){
+            prefix = prefix.concat(", Level: Urgent]");
+        }
+        return prefix;
     }
 }
