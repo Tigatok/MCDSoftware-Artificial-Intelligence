@@ -13,7 +13,7 @@ Sprint 1
 
 Sprint 2
 ========
-[]Configuration
+*[]Configuration
   *[]Set up the basic configuration sequence
     *[]If there is no Config File, create one.
     *[]If there is a Config File, use it.
