@@ -28,8 +28,10 @@ public class MCDSoftwareConfigManager {
     public MCDSoftwareConfigManager(String pathToConfigFile){
         configLines = new ArrayList<String>();
         temp = new ArrayList<String>();
+
         marcusVersionNumber =  assignStringConfigurables("marcus-version");
         debugMode = assignBooleanConfigurables("debug-mode");
+
         buildConfigFile(pathToConfigFile);
     }
 

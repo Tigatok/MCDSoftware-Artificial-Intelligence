@@ -1,6 +1,7 @@
 package mcdsoftware.ai.driver;
 
 import mcdsoftware.ai.configuration.MCDSoftwareConfigManager;
+import mcdsoftware.ai.utils.Util;
 
 /**
  * Created by Tyler on 29/11/2014.
@@ -24,5 +25,6 @@ public class MCDSoftwareAIAPI {
 
     public void initConfigManager(){
         configManager = new MCDSoftwareConfigManager("MarcusAI.conf");
+        Util.logMessage(0, "Init ConfigManager finished...");
     }
 }
