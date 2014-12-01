@@ -1,8 +1,8 @@
 package mcdsoftware.ai.configuration;
 
-import mcdsoftware.ai.utils.Util;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,11 +25,11 @@ public class MCDSoftwareConfigManager {
     @TODO - Create a default loading config file if there is no file already created.
         Check to see if the file exists. If not, create_one() and populate() with defaults.
      */
-    public MCDSoftwareConfigManager(String pathToConfigFile){
+    public MCDSoftwareConfigManager(String pathToConfigFile) {
         configLines = new ArrayList<String>();
         temp = new ArrayList<String>();
 
-        marcusVersionNumber =  assignStringConfigurables("marcus-version");
+        marcusVersionNumber = assignStringConfigurables("marcus-version");
         debugMode = assignBooleanConfigurables("debug-mode");
 
         buildConfigFile(pathToConfigFile);
@@ -39,16 +39,16 @@ public class MCDSoftwareConfigManager {
      * Returns a list of strings which are each line of the config file.
      * If the line starts with a #, ignore that line.
      */
-    public List<String> buildConfigFile(String pathToFile){
+    public List<String> buildConfigFile(String pathToFile) {
         try {
             String currentLine;
             FileReader fileReader = new FileReader(pathToFile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((currentLine = bufferedReader.readLine()) != null) {
-                    temp.add(currentLine);
+                temp.add(currentLine);
             }
-            for(String s : temp) {
-                if(s.length() > 0) {
+            for (String s : temp) {
+                if (s.length() > 0) {
                     if (!(s.substring(0, 1).equalsIgnoreCase("#"))) {
                         configLines.add(s);
                     }
@@ -56,7 +56,7 @@ public class MCDSoftwareConfigManager {
             }
             temp = null;
             fileReader.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return configLines;
@@ -68,35 +68,37 @@ public class MCDSoftwareConfigManager {
      * Replace the single quotes with spaces.
      * Trim the remaining whitespace off the beginning of the command.
      * if the configValue is null, set it to "Not Set".
+     *
      * @param configName The name we want to grab the value for.
      * @return the value of the configurable.
      */
-    public String assignStringConfigurables(String configName){
+    public String assignStringConfigurables(String configName) {
         String configValue = null;
-        for(String s : configLines){
-            if(s.substring(0, s.lastIndexOf(":")).equalsIgnoreCase(configName)){
+        for (String s : configLines) {
+            if (s.substring(0, s.lastIndexOf(":")).equalsIgnoreCase(configName)) {
                 configValue = (s.substring(s.indexOf(" "), s.lastIndexOf(";"))).replace('\'', ' ');
                 configValue = configValue.trim();
             }
         }
-        if(configValue == null){
+        if (configValue == null) {
             configValue = "Not Set";
         }
         return configValue;
     }
-    public boolean assignBooleanConfigurables(String configName){
+
+    public boolean assignBooleanConfigurables(String configName) {
         String configValue = null;
         Boolean flag = false;
-        for(String s : configLines){
-            if(s.substring(0, s.lastIndexOf(":")).equalsIgnoreCase(configName)){
+        for (String s : configLines) {
+            if (s.substring(0, s.lastIndexOf(":")).equalsIgnoreCase(configName)) {
                 configValue = (s.substring(s.indexOf(" "), s.lastIndexOf(";"))).replace('\'', ' ');
                 configValue = configValue.trim();
-                if(configValue.equalsIgnoreCase("true")){
-                    flag=true;
+                if (configValue.equalsIgnoreCase("true")) {
+                    flag = true;
                 }
             }
         }
-        if(configValue == null){
+        if (configValue == null) {
             configValue = "Not Set";
         }
         return flag;

@@ -1,6 +1,6 @@
 package mcdsoftware.ai.driver;
 
-import mcdsoftware.ai.configuration.MCDSoftwareConfigManager;
+import mcdsoftware.ai.Marcus.Marcus;
 import mcdsoftware.ai.utils.Util;
 
 /**
@@ -8,7 +8,11 @@ import mcdsoftware.ai.utils.Util;
  */
 public class MCDSoftwareAIMain {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new MCDSoftwareAIAPI();
+        Util.logMessage(0, "Configuration Manager loaded Successfully.", true);
+        Marcus marcus = new Marcus();
+        Util.logMessage(0, "Initializing Marcus.", true);
+        marcus.start();
     }
 }

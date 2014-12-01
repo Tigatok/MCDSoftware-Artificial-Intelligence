@@ -9,22 +9,22 @@ import mcdsoftware.ai.utils.Util;
 public class MCDSoftwareAIAPI {
     static MCDSoftwareConfigManager configManager;
 
-    public MCDSoftwareAIAPI(){
+    public MCDSoftwareAIAPI() {
         initConfigManager();
     }
 
     public static MCDSoftwareAIMain instance;
 
 
-    public static MCDSoftwareConfigManager getConfigManager(){
-        if(configManager == null){
+    public static MCDSoftwareConfigManager getConfigManager() {
+        if (configManager == null) {
             new MCDSoftwareConfigManager("MarcusAI.conf");
         }
         return configManager;
     }
 
-    public void initConfigManager(){
+    public void initConfigManager() {
         configManager = new MCDSoftwareConfigManager("MarcusAI.conf");
-        Util.logMessage(0, "Init ConfigManager finished...");
+        Util.logMessage(0, "Init ConfigManager finished...", true);
     }
 }
