@@ -11,7 +11,7 @@ public class MCDSoftwareAIMain {
     public static void main(String[] args) {
         new MCDSoftwareAIAPI();
         Util.logMessage(0, "Configuration Manager loaded Successfully.", true);
-        Marcus marcus = new Marcus();
+        Marcus marcus = MCDSoftwareAIAPI.getMarcus();
         Util.logMessage(0, "Initializing Marcus.", true);
         marcus.start();
     }

@@ -1,6 +1,9 @@
 package mcdsoftware.ai.communication;
 
+import mcdsoftware.ai.Marcus.Marcus;
+import mcdsoftware.ai.driver.MCDSoftwareAIAPI;
 import mcdsoftware.ai.utils.MarcusDictionary;
+import mcdsoftware.ai.utils.Util;
 
 /**
  * Created by Tyler on 27/11/2014.
@@ -8,6 +11,7 @@ import mcdsoftware.ai.utils.MarcusDictionary;
 public class CommunicationHandler {
     public MarcusDictionary marcusDictionary;
     private String temporaryString;
+    private Marcus marcus;
 
     /**
      * Todo - Tyler
@@ -24,22 +28,29 @@ public class CommunicationHandler {
      * and destroy the object.
      */
     public CommunicationHandler(String instruction) {
-                marcusDictionary = new MarcusDictionary();
-                if(isQuestion(instruction)){
+        marcus = MCDSoftwareAIAPI.getMarcus();
+        marcusDictionary = MCDSoftwareAIAPI.getMarcusDictionary();
+        if (isQuestion(instruction)) {
+            Util.logMessage(0, "Instruction is a question", false);
+            if(instruction.equalsIgnoreCase("what")){
 
-                }
+            }
+        }
+        if (instruction.toLowerCase().contains("hello")) {
+            marcus.introduceMarcus();
+        }
     }
 
-    public char getLastCharacter(String word){
-        return word.charAt(word.length() -1 );
+    public char getLastCharacter(String word) {
+        return word.charAt(word.length() - 1);
     }
-    public String firstWord(String sentence){
+
+    public String firstWord(String sentence) {
         return sentence.substring(0, sentence.indexOf(" "));
     }
 
-    public boolean isQuestion(String question){
-        if(getLastCharacter(question) == '?' || marcusDictionary.questionDictionary.containsKey(question)){
-            System.out.println("Is a question");
+    public boolean isQuestion(String question) {
+        if (getLastCharacter(question) == '?' || marcusDictionary.questionDictionary.containsKey(question)) {
             return true;
         }
         return false;

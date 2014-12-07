@@ -15,10 +15,12 @@ import java.util.Map;
 public class MarcusDictionary {
     public Map<String, Type> questionDictionary;
 
-    public MarcusDictionary(){
+    public MarcusDictionary() {
         questionDictionary = new HashMap<String, Type>();
-    initQuestionWords();
+        initQuestionWords();
+        Util.logMessage(0, "Question Words have been initialized.", false);
     }
+
     public void initQuestionWords() {
         questionDictionary.put("What", Type.QUESTION);
         questionDictionary.put("How", Type.QUESTION);

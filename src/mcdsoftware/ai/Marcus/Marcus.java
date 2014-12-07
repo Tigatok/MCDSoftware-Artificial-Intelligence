@@ -10,9 +10,11 @@ import java.util.Scanner;
  */
 public class Marcus extends Thread {
     public Scanner scannerInput;
+    private boolean introduced;
 
     public Marcus() {
         Util.logMessage(0, "Waking up Marcus...", false);
+        introduced = false;
         scannerInput = new Scanner(System.in);
     }
 
@@ -29,8 +31,20 @@ public class Marcus extends Thread {
                     break;
                 }
             } else {
-                System.out.println("Marcus: Please give me an instruction. Type help for more information.");
+                System.out.println("Marcus: Please give me an instruction. Type help for more information, or tpye 'q' to quit.");
             }
         }
+    }
+
+    public void introduceMarcus(){
+        if(!introduced){
+            marcusSay("Greetings Human.\n" +
+                    "My name is Marcus, what is your name?");
+            introduced = true;
+        }
+    }
+
+    public void marcusSay(String messageToSay){
+        System.out.println("Marcus > "+messageToSay);
     }
 }
