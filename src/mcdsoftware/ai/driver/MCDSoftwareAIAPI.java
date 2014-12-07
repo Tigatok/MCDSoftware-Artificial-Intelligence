@@ -2,6 +2,7 @@ package mcdsoftware.ai.driver;
 
 import mcdsoftware.ai.Marcus.Marcus;
 import mcdsoftware.ai.configuration.MCDSoftwareConfigManager;
+import mcdsoftware.ai.memory.Memory;
 import mcdsoftware.ai.utils.MarcusDictionary;
 import mcdsoftware.ai.utils.Util;
 
@@ -12,6 +13,7 @@ public class MCDSoftwareAIAPI {
     static MCDSoftwareConfigManager configManager;
     static Marcus marcus;
     static MarcusDictionary marcusDictionary;
+    static Memory memory;
 
     public MCDSoftwareAIAPI() {
         initConfigManager();
@@ -44,5 +46,12 @@ public class MCDSoftwareAIAPI {
             marcusDictionary = new MarcusDictionary();
         }
         return marcusDictionary;
+    }
+
+    public static Memory getMemory(){
+        if(memory == null){
+            memory = new Memory();
+        }
+        return memory;
     }
 }

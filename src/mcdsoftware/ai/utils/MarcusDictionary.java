@@ -22,11 +22,11 @@ public class MarcusDictionary {
     }
 
     public void initQuestionWords() {
-        questionDictionary.put("What", Type.QUESTION);
-        questionDictionary.put("How", Type.QUESTION);
-        questionDictionary.put("Who", Type.QUESTION);
-        questionDictionary.put("Where", Type.QUESTION);
-        questionDictionary.put("Why", Type.QUESTION);
-        questionDictionary.put("When", Type.QUESTION);
+        questionDictionary.put("what", Type.QUESTION);
+        questionDictionary.put("how", Type.QUESTION);
+        questionDictionary.put("who", Type.QUESTION);
+        questionDictionary.put("where", Type.QUESTION);
+        questionDictionary.put("why", Type.QUESTION);
+        questionDictionary.put("when", Type.QUESTION);
     }
 }

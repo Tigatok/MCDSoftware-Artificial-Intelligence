@@ -31,9 +31,18 @@ public class CommunicationHandler {
         marcus = MCDSoftwareAIAPI.getMarcus();
         marcusDictionary = MCDSoftwareAIAPI.getMarcusDictionary();
         if (isQuestion(instruction)) {
-            Util.logMessage(0, "Instruction is a question", false);
-            if(instruction.equalsIgnoreCase("what")){
-
+            MCDSoftwareAIAPI.getMemory().addQuestion(instruction);
+            Util.logMessage(0, "Instruction is a question", true);
+            String[] pieces = instruction.split(" ");
+            if(pieces[0].equalsIgnoreCase("what") ||
+                    pieces[0].equalsIgnoreCase("who") ||
+                    pieces[0].equalsIgnoreCase("when") ||
+                    pieces[0].equalsIgnoreCase("where") ||
+                    pieces[0].equalsIgnoreCase("why") ||
+                    pieces[0].equalsIgnoreCase("how")){
+                Util.logMessage(0, "Starting addQuestion and parseQuestion", true);
+                String[] questionParts = MCDSoftwareAIAPI.getMemory().getQuestionPieces(instruction);
+                MCDSoftwareAIAPI.getMemory().parseQuestion(questionParts);
             }
         }
         if (instruction.toLowerCase().contains("hello")) {
