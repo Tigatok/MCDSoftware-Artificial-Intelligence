@@ -1,8 +1,8 @@
 package mcdsoftware.ai.configuration;
 
-import mcdsoftware.ai.utils.Util;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class MCDSoftwareConfigManager {
      * If the line starts with a #, ignore that line.
      */
     public List<String> buildConfigFile(String pathToFile){
-        Util.logMessage(0, "Initializing buildConfigFile...");
+//        Util.logMessage(0, "Initializing buildConfigFile...");
         try {
             String currentLine;
             FileReader fileReader = new FileReader(pathToFile);
@@ -74,7 +74,7 @@ public class MCDSoftwareConfigManager {
             }
         }
         if(configValue == null){
-            Util.logMessage(1, "ConfigValue for "+ configName + " is null and has not been set.");
+//            Util.logMessage(1, "ConfigValue for "+ configName + " is null and has not been set.");
             configValue = "Not Set";
         }
         return configValue;
@@ -92,7 +92,7 @@ public class MCDSoftwareConfigManager {
             }
         }
         if(configValue == null){
-            Util.logMessage(1, "ConfigValue for "+ configName + " is null and has not been set.");
+//            Util.logMessage(1, "ConfigValue for "+ configName + " is null and has not been set.");
             configValue = "Not Set";
         }
         return flag;

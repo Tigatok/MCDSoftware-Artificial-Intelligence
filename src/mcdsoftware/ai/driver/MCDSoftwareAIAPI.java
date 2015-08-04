@@ -11,7 +11,7 @@ public class MCDSoftwareAIAPI {
     public static MCDSoftwareAIMain instance;
     public static MCDSoftwareConfigManager getConfigManager(){
         if(configManager == null){
-            new MCDSoftwareConfigManager("test.conf");
+            new MCDSoftwareConfigManager("MarcusAI.conf");
         }
         return configManager;
     }
